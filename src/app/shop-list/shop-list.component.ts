@@ -12,18 +12,12 @@ export class ShopListComponent implements OnInit {
  constructor(private shopService: ShopService){}
 
  ngOnInit(): void {
-  this.getShops();
+  this.getShop();
  }
 
- private getShops(){
-  this.shopService.getShopsList().subscribe(data => {
-    this.shops = data;
+ private getShop(){
+  this.shopService.getShop().subscribe(data => {
+    this.shops = [data];
   });
-/*  this.shops = [{
-    "id": 1,
-    "name": "shop",
-    "closed":true
-
-  }]*/
 }
 }
