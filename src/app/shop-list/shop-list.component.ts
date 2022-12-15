@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Shop } from '../shop';
 import { ShopService } from '../shop.service';
 
@@ -7,17 +8,24 @@ import { ShopService } from '../shop.service';
   templateUrl: './shop-list.component.html',
   styleUrls: ['./shop-list.component.css']
 })
+
 export class ShopListComponent implements OnInit {
-  shops : Shop[];
- constructor(private shopService: ShopService){}
 
- ngOnInit(): void {
-  this.getShop();
- }
+  shops: Shop[];
+  constructor(private shopService: ShopService,
+    private router: Router) { }
 
- private getShop(){
-  this.shopService.getShop().subscribe(data => {
-    this.shops = [data];
-  });
-}
+  ngOnInit(): void {
+    this.getShop();
+  }
+
+  private getShop() {
+    this.shopService.findAll().subscribe(data => {
+      this.shops = data;
+    });
+  }
+
+  updateShop(id: number){
+    this.router.navigate(['shop', id]);
+  }
 }
