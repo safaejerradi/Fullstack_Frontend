@@ -28,4 +28,11 @@ export class ShopListComponent implements OnInit {
   updateShop(id: number){
     this.router.navigate(['shop', id]);
   }
+
+  deleteShop(id: number){
+    this.shopService.deleteShop(id).subscribe( data => {
+      console.log(data);
+      this.getShop();
+    })
+  }
 }

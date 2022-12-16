@@ -28,4 +28,8 @@ export class ShopService {
   update(id:number, shop: Shop): Observable<Shop>{
     return this.http.put<Shop>(`${this.baseURL}/${id}`, shop);
   }
+
+  deleteShop(id: number): Observable<Object>{
+    return this.http.delete(`${this.baseURL}/${id}`);
+  }
 }
