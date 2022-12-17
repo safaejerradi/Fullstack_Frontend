@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-<<<<<<< HEAD:src/app/services/in-memory-data.service.ts
 import { Shop } from '../models/shop';
-=======
-import { Product } from './product';
-import { Shop } from './shop';
->>>>>>> 00b2749 (feat: list of product):src/app/in-memory-data.service.ts
+import { Product } from '../product';
 
 @Injectable({
   providedIn: 'root',
