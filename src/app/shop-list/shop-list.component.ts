@@ -16,10 +16,10 @@ export class ShopListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.getShop();
+    this.getShops();
   }
 
-  private getShop() {
+  private getShops() {
     this.shopService.findAll().subscribe(data => {
       this.shops = data;
     });
@@ -30,9 +30,9 @@ export class ShopListComponent implements OnInit {
   }
 
   deleteShop(id: number){
-    this.shopService.deleteShop(id).subscribe( data => {
+    this.shopService.delete(id).subscribe( data => {
       console.log(data);
-      this.getShop();
+      this.getShops();
     })
   }
 }

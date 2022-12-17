@@ -29,7 +29,7 @@ export class ShopService {
     return this.http.put<Shop>(`${this.baseURL}/${id}`, shop);
   }
 
-  deleteShop(id: number): Observable<Object>{
-    return this.http.delete(`${this.baseURL}/${id}`);
+  delete(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseURL}/${id}`);
   }
 }
