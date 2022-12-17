@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 
 @NgModule({
   declarations: [

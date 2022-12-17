@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShopListComponent } from './components/shop/shop-list/shop-list.component';
 import { CreateShopComponent } from './components/shop/create-shop/create-shop.component';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 
 const routes: Routes = [
   {path: 'shops', component: ShopListComponent, pathMatch: 'full'},
