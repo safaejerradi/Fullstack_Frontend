@@ -1,0 +1,20 @@
+<h2> Category List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Product id</th>
+            <th>Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <td> {{ category.name }} </td>
+            <td> {{ category.product_id }} </td>
+            <td>
+                <button 
+                class="btn btn-info">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

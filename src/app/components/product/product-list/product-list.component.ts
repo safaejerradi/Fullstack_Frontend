@@ -32,6 +32,9 @@ export class ProductListComponent implements OnInit{
       this.getProduct();
     })
   }
+  addCategoryToProduct(id: number) {
+    this.router.navigate([`${id}/category/create`], { relativeTo: this.route });
+  }
 
 
 }

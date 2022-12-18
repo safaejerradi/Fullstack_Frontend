@@ -6,7 +6,8 @@ import { UpdateShopComponent } from './components/shop/update-shop/update-shop.c
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { UpdateProductComponent } from './components/product/update-product/update-product.component';
-
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
+import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 const routes: Routes = [
   {path: 'shops', component: ShopListComponent, pathMatch: 'full'},
   {path: '', redirectTo: 'shops', pathMatch: 'full'},
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path: 'products', component: ProductListComponent, pathMatch: 'full'},
   {path: 'shops/:id/product/create', component: CreateProductComponent, pathMatch: 'full'},
   {path: 'product/:id', component: UpdateProductComponent, pathMatch: 'full'},
+  {path: 'categories', component: CategoryListComponent, pathMatch: 'full'},
+  {path: 'products/:id/category/create', component: CreateCategoryComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

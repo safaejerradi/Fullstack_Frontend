@@ -13,6 +13,9 @@
             <td> {{ product.shop_id }} </td>
             <td>
                 <button 
+                (click)="addCategoryToProduct(product.id)" 
+                class="btn btn-info">Add New Category</button>
+                <button 
                 (click)="updateProduct(product.id)" 
                 class="btn btn-info">Update</button>
 

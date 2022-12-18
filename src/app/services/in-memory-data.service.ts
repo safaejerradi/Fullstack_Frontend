@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Shop } from '../models/shop';
 import { Product } from '../models/product';
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root',
@@ -102,7 +103,15 @@ export class InMemoryDataService implements InMemoryDbService {
           "shop_id":1
         }
       ];
-    return {shops, products};
+      const categories: Category[] = [
+        {
+          "id": 1,
+          "name": "pattes",
+          "product_id":1
+        }
+      ];
+      
+    return {shops, products,categories};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
