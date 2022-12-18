@@ -12,6 +12,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { UpdateProductComponent } from './components/product/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateProductComponent } from './components/product/create-product/crea
     CreateShopComponent,
     UpdateShopComponent,
     ProductListComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,

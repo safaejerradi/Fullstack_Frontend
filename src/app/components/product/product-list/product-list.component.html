@@ -13,6 +13,7 @@
             <td> {{ product.shop_id }} </td>
             <td>
                 <button 
+                (click)="updateProduct(product.id)" 
                 class="btn btn-info">Update</button>
             </td>
         </tr>

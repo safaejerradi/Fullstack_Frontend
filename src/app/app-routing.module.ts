@@ -5,6 +5,7 @@ import { CreateShopComponent } from './components/shop/create-shop/create-shop.c
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { UpdateProductComponent } from './components/product/update-product/update-product.component';
 
 const routes: Routes = [
   {path: 'shops', component: ShopListComponent, pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'shop/:id', component: UpdateShopComponent},
   {path: 'products', component: ProductListComponent, pathMatch: 'full'},
   {path: 'shops/:id/product/create', component: CreateProductComponent, pathMatch: 'full'},
+  {path: 'product/:id', component: UpdateProductComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
