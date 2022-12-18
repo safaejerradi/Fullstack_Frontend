@@ -28,4 +28,8 @@ export class CategoryService {
 update(id:number, category:Category): Observable<Category>{
   return this.http.put<Category>(`${this.baseURL}/${id}`, category);
 }
+
+delete(id: number): Observable<void>{
+  return this.http.delete<void>(`${this.baseURL}/${id}`);
+}
 }
