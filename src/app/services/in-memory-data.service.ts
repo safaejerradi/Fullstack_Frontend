@@ -98,7 +98,8 @@ export class InMemoryDataService implements InMemoryDbService {
       const products: Product[] = [
         {
           "id": 1,
-          "name": "tacos"
+          "name": "tacos",
+          "shop_id":1
         }
       ];
     return {shops, products};

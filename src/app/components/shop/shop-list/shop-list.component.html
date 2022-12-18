@@ -19,9 +19,12 @@
                 <button 
                 (click)="deleteShop(shop.id)" 
                 class="btn btn-danger">Delete</button>
+                <button 
+                (click)="addProductToShop(shop.id)" 
+                class="btn btn-info">Add New Product</button>
             </td>
             <!-- <td >
-                <span *ngFor="let day of shop.schedule | keyvalue">
+                <span *ngFor="let day ofp shop.schedule | keyvalue">
                     <b>{{day.key + ": "}}</b>{{day.value }}<br/>
                 </span>
                 

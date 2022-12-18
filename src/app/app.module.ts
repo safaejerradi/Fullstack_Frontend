@@ -11,6 +11,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductListComponent } from './components/product/product-list/product-
     ShopListComponent,
     CreateShopComponent,
     UpdateShopComponent,
-    ProductListComponent
+    ProductListComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

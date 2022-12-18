@@ -9,6 +9,7 @@ import { Observable} from 'rxjs';
 export class ProductService {
 
   private baseURL = 'api/products'
+  product :Product;
   constructor(private http : HttpClient) { }
   findById(id: number): Observable<Product>{
     return this.http.get<Product>(`${this.baseURL}/${id}`);
@@ -16,5 +17,9 @@ export class ProductService {
 
   findAll(): Observable<Product[]>{
     return this.http.get<Product[]>(`${this.baseURL}`);
+  }
+
+  save(product: Product): Observable<Product>{
+    return this.http.post<Product>(`${this.baseURL}`, product);
   }
 }

@@ -3,12 +3,14 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Shop id</th>
             <th>Actions </th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let product of products">
             <td> {{ product.name }} </td>
+            <td> {{ product.shop_id }} </td>
             <td>
                 <button 
                 class="btn btn-info">Update</button>
