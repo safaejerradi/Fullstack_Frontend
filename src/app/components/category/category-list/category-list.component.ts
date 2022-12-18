@@ -22,6 +22,9 @@ export class CategoryListComponent implements OnInit {
     });
 
   }
+  updateCategory(id: number){
+    this.router.navigate(['category', id]);
+  }
   
    
 

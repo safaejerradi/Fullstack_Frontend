@@ -25,4 +25,7 @@ export class CategoryService {
     return this.http.post<Category>(`${this.baseURL}`, category);
 
 }
+update(id:number, category:Category): Observable<Category>{
+  return this.http.put<Category>(`${this.baseURL}/${id}`, category);
+}
 }

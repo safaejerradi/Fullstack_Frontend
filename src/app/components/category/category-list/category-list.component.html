@@ -13,6 +13,7 @@
             <td> {{ category.product_id }} </td>
             <td>
                 <button 
+                (click)="updateCategory(category.id)" 
                 class="btn btn-info">Update</button>
             </td>
         </tr>
