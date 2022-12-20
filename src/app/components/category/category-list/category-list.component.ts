@@ -26,6 +26,10 @@ export class CategoryListComponent implements OnInit {
     this.router.navigate(['category', id]);
   }
 
+  categoryDetails(id:number){
+    this.router.navigate(['category-details', id]);
+  }
+
   deleteCategory(id: number){
     this.categoryservice.delete(id).subscribe( data => {
       console.log(data);

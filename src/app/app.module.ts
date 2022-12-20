@@ -18,6 +18,7 @@ import { CreateCategoryComponent } from './components/category/create-category/c
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { ShopDetailsComponent } from './components/shop/shop-details/shop-details.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
+import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductDetailsComponent } from './components/product/product-details/pr
     CreateCategoryComponent,
     UpdateCategoryComponent,
     ShopDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     BrowserModule,
