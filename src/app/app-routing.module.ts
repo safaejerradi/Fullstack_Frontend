@@ -9,6 +9,7 @@ import { UpdateProductComponent } from './components/product/update-product/upda
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { ShopDetailsComponent } from './components/shop/shop-details/shop-details.component';
 const routes: Routes = [
   {path: 'shops', component: ShopListComponent, pathMatch: 'full'},
   {path: '', redirectTo: 'shops', pathMatch: 'full'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'product/:id', component: UpdateProductComponent, pathMatch: 'full'},
   {path: 'categories', component: CategoryListComponent, pathMatch: 'full'},
   {path: 'products/:id/category/create', component: CreateCategoryComponent, pathMatch: 'full'},
-  {path: 'category/:id', component: UpdateCategoryComponent, pathMatch: 'full'}
+  {path: 'category/:id', component: UpdateCategoryComponent, pathMatch: 'full'},
+  {path: 'shop-details/:id',component: ShopDetailsComponent,pathMatch:'full'}
 ];
 
 @NgModule({

@@ -26,6 +26,10 @@ export class ShopListComponent implements OnInit {
     });
   }
 
+  shopDetails(id:number){
+    this.router.navigate(['shop-details', id]);
+  }
+
   updateShop(id: number){
     this.router.navigate(['shop', id]);
   }
