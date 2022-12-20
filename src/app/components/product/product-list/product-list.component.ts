@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import { Router ,ActivatedRoute} from '@angular/router';
+// import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @Component({
   selector: 'app-product-list',

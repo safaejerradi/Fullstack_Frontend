@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Shop } from '../../../models/shop';
 import { ShopService } from '../../../services/shop.service';
-import { RouterModule, Routes ,ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-shop-list',
@@ -10,28 +11,38 @@ import { RouterModule, Routes ,ActivatedRoute } from '@angular/router';
   styleUrls: ['./shop-list.component.css']
 })
 
-export class ShopListComponent implements OnInit {
+export class ShopListComponent implements OnInit, AfterViewInit {
 
-  shops: Shop[];
+  displayedColumns: string[] = ['name', 'closed', 'actions'];
+  shops: MatTableDataSource<Shop> = new MatTableDataSource<Shop>();
+  private globalFilter = { name: '', closed: '' };
+
   constructor(private shopService: ShopService,
     private router: Router, private route: ActivatedRoute) { }
+
+    @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
     this.getShops();
   }
 
+  ngAfterViewInit() {
+    this.shops.sort = this.sort;
+    this.shops.filterPredicate = this.filterShops;
+  }
+
   private getShops() {
     this.shopService.findAll().subscribe(data => {
-      this.shops = data;
+      this.shops.data = data;
     });
   }
 
-  updateShop(id: number){
+  updateShop(id: number) {
     this.router.navigate(['shop', id]);
   }
 
-  deleteShop(id: number){
-    this.shopService.delete(id).subscribe( data => {
+  deleteShop(id: number) {
+    this.shopService.delete(id).subscribe(data => {
       console.log(data);
       this.getShops();
     })
@@ -40,4 +51,24 @@ export class ShopListComponent implements OnInit {
   addProductToShop(id: number) {
     this.router.navigate([`${id}/product/create`], { relativeTo: this.route });
   }
+
+  private filterShops(shop: Shop, filter: string): boolean {
+    if (filter.length === 0) return true;
+  
+    const filters = JSON.parse(filter);
+    const nameFilter = filters.name.length > 0 ?
+      shop.name.toLocaleLowerCase().trim().indexOf(filters.name.toLocaleLowerCase().trim()) !== -1
+      : true;
+    const closedFilter = filters.closed.length > 0 ?
+      shop.closed.toString().toLocaleLowerCase().trim().indexOf(filters.closed.toLocaleLowerCase().trim()) !== -1
+      : true;
+    return nameFilter && closedFilter;
+  }
+
+  changeFilter(value: string, field: string) {
+    field === 'closed' ? this.globalFilter.closed = value : this.globalFilter.name = value;
+    const filters = JSON.stringify(this.globalFilter);
+    this.shops.filter = filters;
+  }
+
 }

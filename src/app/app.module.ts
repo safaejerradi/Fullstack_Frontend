@@ -16,6 +16,9 @@ import { UpdateProductComponent } from './components/product/update-product/upda
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { UpdateCategoryComponent } from './components/category/update-category/u
 // Remove it when a real server is ready to receive requests.
 HttpClientInMemoryWebApiModule.forRoot(
   InMemoryDataService, { dataEncapsulation: false }
-)
+),
+BrowserAnimationsModule,
+MatTableModule,
+MatSortModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
