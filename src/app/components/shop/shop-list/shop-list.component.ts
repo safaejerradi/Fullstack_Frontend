@@ -16,7 +16,7 @@ export class ShopListComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['name', 'closed', 'creationDate', 'productCount', 'categoryCount','actions'];
   shops = new MatTableDataSource<Shop>();
-  private globalFilter = { name: '', closed: '' };
+  private globalFilter = { name: '', closed: '', beforeCreationDate: '', afterCreationDate: '' };
 
   constructor(private shopService: ShopService,
     private router: Router,
@@ -70,11 +70,24 @@ export class ShopListComponent implements OnInit, AfterViewInit {
     const closedFilter = filters.closed.length > 0 ?
       shop.closed.toString().toLocaleLowerCase().trim().indexOf(filters.closed.toLocaleLowerCase().trim()) !== -1
       : true;
-    return nameFilter && closedFilter;
+      const beforeCreationDateFilter = 
+      filters.beforeCreationDate.length > 0 && shop.creationDate != null ?
+      shop.creationDate <= filters.beforeCreationDate
+      : true;
+      const afterCreationDateFilter = 
+      filters.afterCreationDate.length > 0 && shop.creationDate != null ?
+      shop.creationDate >= filters.afterCreationDate
+      : true;
+    return nameFilter && closedFilter && beforeCreationDateFilter && afterCreationDateFilter;
   }
 
   changeFilter(value: string, field: string) {
-    field === 'closed' ? this.globalFilter.closed = value : this.globalFilter.name = value;
+    switch (field) {
+      case 'name': this.globalFilter.name = value; break;
+      case 'closed': this.globalFilter.closed = value; break;
+      case 'beforeCreationDate': this.globalFilter.beforeCreationDate = value; break;
+      case 'afterCreationDate': this.globalFilter.afterCreationDate = value; break;
+    }
     const filters = JSON.stringify(this.globalFilter);
     this.shops.filter = filters;
   }

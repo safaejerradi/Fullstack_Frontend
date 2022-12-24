@@ -1,11 +1,33 @@
 <h2 class="text-center">Listes des boutiques</h2>
+
 <div class="row">
     <div class="col-md-12">
-        <button class="btn btn-success">Ajouter une boutique</button>
+        <button class="btn btn-success float-right"  routerLink="/shop/create">Ajouter une boutique</button>
     </div>
 </div>
 
+<!-- Filter input -->
+<div class="row">
+    <div class="col-md-2">
+        <label for="selectField">En congé</label>
+        <select class="form-control" #selectField (change)="changeFilter(selectField.value, 'closed')">
+            <option value="">Peu importe</option>
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="dateFieldAfter">Date de création après</label>
+        <input class="form-control" type="date" [max]="dateFieldBefore.value" #dateFieldAfter (change)="changeFilter(dateFieldAfter.value, 'afterCreationDate')">
+    </div>
+    <div class="col-md-2">
+        <label for="dateFieldBefore">Date de création avant</label>
+        <input class="form-control" type="date" [min]="dateFieldAfter.value" #dateFieldBefore (change)="changeFilter(dateFieldBefore.value, 'beforeCreationDate')">
+    </div>
+  </div>
 
+
+<!-- Table -->
 <table mat-table matSort [dataSource]="shops">
     <!-- Table columns -->
     <ng-container matColumnDef="name">
@@ -46,9 +68,9 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td class="" mat-cell *matCellDef="let shop">
-            <button mat-button class="btn btn-info mr-2" (click)="updateShop(shop.id)">Edit</button>
-            <button mat-button class="btn btn-danger" (click)="deleteShop(shop.id)">Delete</button>
-            <button (click)="addProductToShop(shop.id)" class="btn btn-success">Add New Product</button>
+            <button mat-button class="btn btn-info mr-2" (click)="updateShop(shop.id)">Modifier</button>
+            <button mat-button class="btn btn-danger mr-2" (click)="deleteShop(shop.id)">Supprimer</button>
+            <button (click)="addProductToShop(shop.id)" class="btn btn-success">Ajouter un produit</button>
         </td>
     </ng-container>
 
@@ -56,15 +78,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<!-- Pagination -->
 <mat-paginator 
 [pageSizeOptions]="[5, 10, 20]" 
 showFirstLastButtons>
 </mat-paginator>
 
-<!-- Filter input -->
-<input #inputField (keyup)="changeFilter(inputField.value, 'name')" placeholder="Filter">
-<select #selectField (change)="changeFilter(selectField.value, 'closed')">
-    <option value="">Tout</option>
-    <option value="true">Fermé</option>
-    <option value="false">Ouvert</option>
-</select>
+
