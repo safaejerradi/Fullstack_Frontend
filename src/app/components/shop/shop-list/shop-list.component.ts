@@ -3,7 +3,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { Shop } from '../../../models/shop';
 import { ShopService } from '../../../services/shop.service';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-shop-list',
@@ -13,20 +14,23 @@ import {MatSort} from '@angular/material/sort';
 
 export class ShopListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'closed', 'actions'];
-  shops: MatTableDataSource<Shop> = new MatTableDataSource<Shop>();
+  displayedColumns: string[] = ['name', 'closed', 'creationDate', 'productCount', 'categoryCount','actions'];
+  shops = new MatTableDataSource<Shop>();
   private globalFilter = { name: '', closed: '' };
 
   constructor(private shopService: ShopService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router,
+     private route: ActivatedRoute) { }
 
     @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator
 
   ngOnInit(): void {
     this.getShops();
   }
 
   ngAfterViewInit() {
+    this.shops.paginator = this.paginator;
     this.shops.sort = this.sort;
     this.shops.filterPredicate = this.filterShops;
   }
