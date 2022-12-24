@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Product } from '../models/product';
 import { Observable} from 'rxjs';
+import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseURL = 'api/products'
+  private baseURL = environment.production ? environment.apiProdUrl : environment.apiDevUrl;
   product :Product;
+
   constructor(private http : HttpClient) { }
+
   findById(id: number): Observable<Product>{
     return this.http.get<Product>(`${this.baseURL}/${id}`);
   }
@@ -27,6 +30,9 @@ export class ProductService {
   }
   delete(id: number): Observable<void>{
     return this.http.delete<void>(`${this.baseURL}/${id}`);
+  }
+  findByShopId(shopId: number): Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.baseURL}/?shop_id=${shopId}`);
   }
 
 }
