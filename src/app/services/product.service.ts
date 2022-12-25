@@ -9,7 +9,7 @@ import { environment } from '../environment';
 })
 export class ProductService {
 
-  private baseURL = environment.production ? environment.apiProdUrl : environment.apiDevUrl;
+  private baseURL = `${environment.production ? environment.apiProdUrl : environment.apiDevUrl}/product`;
   product :Product;
 
   constructor(private http : HttpClient) { }
@@ -32,7 +32,7 @@ export class ProductService {
     return this.http.delete<void>(`${this.baseURL}/${id}`);
   }
   findByShopId(shopId: number): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.baseURL}/?shop_id=${shopId}`);
+    return this.http.get<Product[]>(`${this.baseURL}?shopId=${shopId}`);
   }
 
 }

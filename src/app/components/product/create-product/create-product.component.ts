@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from '../../../services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class CreateProductComponent  {
 
   product: Product = new Product();
 
@@ -17,9 +17,7 @@ export class CreateProductComponent implements OnInit {
     private router: Router
     ,
     private route: ActivatedRoute) { }
-  ngOnInit(): void {
-    this.product.shop_id = this.route.snapshot.params['id'];
-  }
+  
 
   goToProductList() {
     this.router.navigate(['products']);

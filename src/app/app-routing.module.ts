@@ -13,19 +13,19 @@ import { ShopDetailsComponent } from './components/shop/shop-details/shop-detail
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
 const routes: Routes = [
-  {path: 'shops', component: ShopListComponent, pathMatch: 'full'},
-  {path: '', redirectTo: 'shops', pathMatch: 'full'},
-  {path: 'shop/create', component: CreateShopComponent},
-  {path: 'shop/:id', component: UpdateShopComponent},
-  {path: 'products', component: ProductListComponent, pathMatch: 'full'},
-  {path: 'shops/:id/product/create', component: CreateProductComponent, pathMatch: 'full'},
+  {path: 'shop', component: ShopListComponent, pathMatch: 'full'},
+  {path: '', redirectTo: 'shop', pathMatch: 'full'},
+  {path: 'shop/create', component: CreateShopComponent, pathMatch:'full'},
+  {path: 'shop/:id', component: UpdateShopComponent, pathMatch:'full'},
+  {path: 'product', component: ProductListComponent, pathMatch: 'full'},
+  {path: 'shop/:id/product/create', component: CreateProductComponent, pathMatch: 'full'},
   {path: 'product/:id', component: UpdateProductComponent, pathMatch: 'full'},
-  {path: 'categories', component: CategoryListComponent, pathMatch: 'full'},
-  {path: 'products/:id/category/create', component: CreateCategoryComponent, pathMatch: 'full'},
+  {path: 'category', component: CategoryListComponent, pathMatch: 'full'},
+  {path: 'product/:id/category/create', component: CreateCategoryComponent, pathMatch: 'full'},
   {path: 'category/:id', component: UpdateCategoryComponent, pathMatch: 'full'},
-  {path: 'shop-details/:id',component: ShopDetailsComponent,pathMatch:'full'},
-  {path: 'product-details/:id',component: ProductDetailsComponent,pathMatch:'full'},
-  {path: 'category-details/:id',component: CategoryDetailsComponent,pathMatch:'full'}
+  {path: 'shop/:id/detail',component: ShopDetailsComponent,pathMatch:'full'},
+  {path: 'product/:id/detail',component: ProductDetailsComponent,pathMatch:'full'},
+  {path: 'category/:id/detail',component: CategoryDetailsComponent,pathMatch:'full'}
 ];
 
 @NgModule({

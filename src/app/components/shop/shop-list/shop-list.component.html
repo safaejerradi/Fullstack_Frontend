@@ -68,9 +68,12 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td class="" mat-cell *matCellDef="let shop">
-            <button mat-button class="btn btn-info mr-2" (click)="updateShop(shop.id)">Modifier</button>
-            <button mat-button class="btn btn-danger mr-2" (click)="deleteShop(shop.id)">Supprimer</button>
+            <div class="d-flex justify-content-around">
+            <button mat-button class="btn btn-primary" [routerLink]="['/shop/', shop.id, 'detail']">Détails</button>
+                <button mat-button class="btn btn-info" (click)="updateShop(shop.id)">Modifier</button>
+            <button mat-button class="btn btn-danger" (click)="deleteShop(shop.id)">Supprimer</button>
             <button (click)="addProductToShop(shop.id)" class="btn btn-success">Ajouter un produit</button>
+            </div>
         </td>
     </ng-container>
 
