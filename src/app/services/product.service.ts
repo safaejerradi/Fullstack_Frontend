@@ -22,8 +22,8 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseURL}`);
   }
 
-  save(product: Product): Observable<Product>{
-    return this.http.post<Product>(`${this.baseURL}`, product);
+  save(product: Product, shopId: number): Observable<Product>{
+    return this.http.post<Product>(`${this.baseURL}?shopId=${shopId}`, product);
   }
   update(id:number, product: Product): Observable<Product>{
     return this.http.put<Product>(`${this.baseURL}/${id}`, product);

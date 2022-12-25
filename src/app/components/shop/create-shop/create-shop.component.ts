@@ -17,7 +17,7 @@ export class CreateShopComponent {
 
 
   goToEmployeeList() {
-    this.router.navigate(['shops']);
+    this.router.navigate(['shop']);
   }
 
   save() {

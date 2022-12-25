@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Shop } from '../models/shop';
 import { Observable} from 'rxjs';
 import { environment } from '../environment';
-import { Product } from '../models/product';
 
 
 @Injectable({

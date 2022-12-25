@@ -14,18 +14,16 @@ export class CreateProductComponent  {
   product: Product = new Product();
 
   constructor(private productservice: ProductService,
-    private router: Router
-    ,
+    private router: Router,
     private route: ActivatedRoute) { }
   
 
   goToProductList() {
-    this.router.navigate(['products']);
+    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
   }
 
   save() {
-    this.productservice.save(this.product).subscribe(data => {
-      console.log(data);
+    this.productservice.save(this.product, this.route.snapshot.params['id']).subscribe(() => {
       this.goToProductList();
     });
   }
