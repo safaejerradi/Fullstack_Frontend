@@ -1,31 +1,66 @@
-<h2> Product List</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <!-- <th>Shop id</th> -->
-            <th>Actions </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products">
-            <td> {{ product.name }} </td>
-            <!-- <td> {{ product.shop_id }} </td> -->
-            <td>
-                <button 
-                (click)="addCategoryToProduct(product.id)" 
-                class="btn btn-info">Add New Category</button>
-                <button 
-                (click)="updateProduct(product.id)" 
-                class="btn btn-info">Update</button>
-                <button 
-                (click)="productDetails(product.id)" 
-                class="btn btn-info">View</button>
+<table mat-table [dataSource]="products">
+    <!-- Table columns -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+            <div>
+                Nom
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+        <td mat-footer-cell *matFooterCellDef>
+            <span class="font-weight-bold">Total: </span>{{shop.productCount}}
+        </td>
+    </ng-container>
 
-                <button 
-                (click)="deleteProduct(product.id)" 
-                class="btn btn-danger">Delete</button>
-            </td>
-        </tr>
-    </tbody>
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>
+            <div>
+                Prix
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="categories">
+        <th mat-header-cell *matHeaderCellDef>
+            <div>
+                Catégories
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>
+            <div>
+                Déscription
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+    </ng-container>
+
+    <!-- Action column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+            <div class="d-flex justify-content-between">
+                <span>Actions</span>
+                <button (click)="addProductToShop(shop.id)" class="btn btn-success">Ajouter un produit</button>
+            </div>
+        </th>
+        <td class="" mat-cell *matCellDef="let product">
+            <div class="d-flex justify-content-around">
+                <button mat-button class="btn btn-primary" [routerLink]="['/shop/', shop.id, 'detail']">Détails</button>
+                <button mat-button class="btn btn-info" (click)="updateProduct(product.id)">Modifier</button>
+                <button mat-button class="btn btn-danger" (click)="deleteProduct(product.id)">Supprimer</button>
+            </div>
+        </td>
+    </ng-container>
+
+    <!-- Table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedFooterColumns"></tr>
 </table>
+<!-- Pagination -->
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

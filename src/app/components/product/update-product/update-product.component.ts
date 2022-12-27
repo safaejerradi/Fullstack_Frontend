@@ -27,7 +27,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   goToProductList(){
-    this.router.navigate(['products']);
+    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
   }
 
 }

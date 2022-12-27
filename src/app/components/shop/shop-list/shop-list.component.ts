@@ -56,10 +56,6 @@ export class ShopListComponent implements OnInit, AfterViewInit {
     })
   }
 
-  addProductToShop(id: number) {
-    this.router.navigate([`${id}/product/create`], { relativeTo: this.route });
-  }
-
   private filterShops(shop: Shop, filter: string): boolean {
     if (filter.length === 0) return true;
   

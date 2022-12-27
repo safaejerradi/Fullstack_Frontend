@@ -4,7 +4,6 @@ import { ShopListComponent } from './components/shop/shop-list/shop-list.compone
 import { CreateShopComponent } from './components/shop/create-shop/create-shop.component';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
-import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { UpdateProductComponent } from './components/product/update-product/update-product.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
@@ -12,6 +11,7 @@ import { UpdateCategoryComponent } from './components/category/update-category/u
 import { ShopDetailsComponent } from './components/shop/shop-details/shop-details.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
 const routes: Routes = [
   {path: 'shop', component: ShopListComponent, pathMatch: 'full'},
   {path: '', redirectTo: 'shop', pathMatch: 'full'},

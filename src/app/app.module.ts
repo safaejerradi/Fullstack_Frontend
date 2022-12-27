@@ -9,7 +9,6 @@ import { CreateShopComponent } from './components/shop/create-shop/create-shop.c
 import { FormsModule } from '@angular/forms';
 import { UpdateShopComponent } from './components/shop/update-shop/update-shop.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
-import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { UpdateProductComponent } from './components/product/update-product/update-product.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
@@ -23,6 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { FilterByPipe } from './pipes/filter-by-pipe';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { getFrPaginatorIntl } from './fr-paginator-intl';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
 
 
 @NgModule({

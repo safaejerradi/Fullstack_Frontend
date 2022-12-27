@@ -1,43 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
-import { Router ,ActivatedRoute} from '@angular/router';
-// import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Shop } from 'src/app/models/shop';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
-  products: Product[];
-  constructor(private productservice: ProductService,
-    private router: Router, private route: ActivatedRoute) { }
+export class ProductListComponent implements  AfterViewInit, OnChanges {
 
-  ngOnInit(): void {
-    this.getProduct();
+  displayedColumns: string[] = ['name', 'price', 'description', 'actions'];
+  displayedFooterColumns: string[] = ['name'];
+  products = new MatTableDataSource<Product>();
+  @Input() shop: Shop;
+  @ViewChild(MatPaginator) paginator: MatPaginator
+
+  constructor(
+    private productservice: ProductService,
+    private router: Router,
+     private route: ActivatedRoute) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['shop'] && !changes['shop'].firstChange) this.getProduct();
   }
+
   private getProduct() {
-    this.productservice.findAll().subscribe(data => {
-      this.products = data;
+    this.productservice.findByShopId(this.shop.id).subscribe(data => {
+      this.products.data = data;
     });
 
   }
-  updateProduct(id: number){
+
+  updateProduct(id: number) {
     this.router.navigate(['product', id]);
   }
-  productDetails(id:number){
+
+  productDetails(id: number) {
     this.router.navigate(['product-details', id]);
   }
-  deleteProduct(id: number){
-    this.productservice.delete(id).subscribe( data => {
-      console.log(data);
+
+  deleteProduct(id: number) {
+    this.productservice.delete(id).subscribe(data => {
       this.getProduct();
     })
   }
+
   addCategoryToProduct(id: number) {
     this.router.navigate([`${id}/category/create`], { relativeTo: this.route });
   }
 
+  addProductToShop(id: number) {
+    this.router.navigate([`/shop/${id}/product/create`]);
+  }
+
+  ngAfterViewInit() {
+    this.products.paginator = this.paginator;
+  }
 
 }
