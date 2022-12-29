@@ -7,5 +7,5 @@ export class Product {
     price : number;
     descriptionFR : string;
     descriptionENG : string;
-    // categories : Category[];
+    categories : Category[];
 }

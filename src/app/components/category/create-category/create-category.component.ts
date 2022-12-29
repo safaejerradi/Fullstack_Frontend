@@ -11,22 +11,24 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class CreateCategoryComponent implements OnInit {
   category: Category = new Category();
+  product_id: number;
 
-  constructor(private categoryservice: CategoryService,
-    private router: Router
-    ,
+  constructor(
+    private categoryservice: CategoryService,
+    private router: Router,
     private route: ActivatedRoute) { }
+
+
   ngOnInit(): void {
-    this.category.product_id = this.route.snapshot.params['id'];
+    this.product_id = this.route.snapshot.params['id'];
   }
 
   goToCategoryList() {
-    this.router.navigate(['categories']);
+    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
   }
 
   save() {
-    this.categoryservice.save(this.category).subscribe(data => {
-      console.log(data);
+    this.categoryservice.save(this.category, this.product_id).subscribe(() => {
       this.goToCategoryList();
     });
   }

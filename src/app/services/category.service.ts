@@ -9,7 +9,7 @@ import { environment } from '../environment';
 })
 export class CategoryService {
 
-  private baseURL = environment.production ? `${environment.apiProdUrl}/categories` : `${environment.apiDevUrl}/categories`;
+  private baseURL = environment.production ? `${environment.apiProdUrl}/category` : `${environment.apiDevUrl}/category`;
   category : Category;
   
   constructor(private http : HttpClient) { }
@@ -21,8 +21,8 @@ export class CategoryService {
   findAll(): Observable<Category[]>{
     return this.http.get<Category[]>(`${this.baseURL}`);
   }
-  save(category: Category): Observable<Category>{
-    return this.http.post<Category>(`${this.baseURL}`, category);
+  save(category: Category, productId: number): Observable<Category>{
+    return this.http.post<Category>(`${this.baseURL}?productId=${productId}`, category);
 
 }
 update(id:number, category:Category): Observable<Category>{
