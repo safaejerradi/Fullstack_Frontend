@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Shop } from 'src/app/models/shop';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ProductListComponent implements  AfterViewInit, OnChanges {
 
-  displayedColumns: string[] = ['name', 'price', 'description', 'actions'];
+  displayedColumns: string[] = ['name', 'price', 'categories', 'description', 'actions'];
   displayedFooterColumns: string[] = ['name'];
   products = new MatTableDataSource<Product>();
   @Input() shop: Shop;
@@ -59,6 +60,19 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     this.products.paginator = this.paginator;
+    this.products.filterPredicate = this.filterProducts;
+  }
+
+  private filterProducts(product: Product, filter: string): boolean {
+    if (filter.length === 0) return true;
+    const categoryString = product.categories.map((category: Category) => category.name.toLocaleLowerCase().trim()).join(' ');
+    const categoryFilter = categoryString.length > 0 ?
+      categoryString.indexOf(filter.toLocaleLowerCase().trim()) !== -1
+      : true;
+
+      console.log(filter.toLocaleLowerCase().trim());
+      console.log(categoryString);
+    return categoryFilter;
   }
 
 }

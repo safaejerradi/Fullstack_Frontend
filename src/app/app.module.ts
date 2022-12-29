@@ -12,7 +12,6 @@ import { ProductListComponent } from './components/product/product-list/product-
 import { UpdateProductComponent } from './components/product/update-product/update-product.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
-import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { ShopDetailsComponent } from './components/shop/shop-details/shop-details.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
@@ -23,6 +22,8 @@ import { FilterByPipe } from './pipes/filter-by-pipe';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { getFrPaginatorIntl } from './fr-paginator-intl';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { DisplayCategoriesPipe } from './pipes/display-categories-pipe';
+import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CreateProductComponent } from './components/product/create-product/crea
     ShopDetailsComponent,
     ProductDetailsComponent,
     CategoryDetailsComponent,
-    FilterByPipe
+    FilterByPipe,
+    DisplayCategoriesPipe
   ],
   imports: [
     BrowserModule,
