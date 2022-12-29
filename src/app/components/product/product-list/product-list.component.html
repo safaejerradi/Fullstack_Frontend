@@ -6,7 +6,7 @@
                 Nom
             </div>
         </th>
-        <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.nameFR}} </td>
         <td mat-footer-cell *matFooterCellDef>
             <span class="font-weight-bold">Total: </span>{{shop.productCount}}
         </td>
@@ -36,7 +36,7 @@
                 Déscription
             </div>
         </th>
-        <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.descriptionFR}} </td>
     </ng-container>
 
     <!-- Action column -->
@@ -49,7 +49,7 @@
         </th>
         <td class="" mat-cell *matCellDef="let product">
             <div class="d-flex justify-content-around">
-                <button mat-button class="btn btn-primary" [routerLink]="['/shop/', shop.id, 'detail']">Détails</button>
+                <button mat-button class="btn btn-success" (click)="addCategoryToProduct(product.id)">Ajouter catégorie</button>
                 <button mat-button class="btn btn-info" (click)="updateProduct(product.id)">Modifier</button>
                 <button mat-button class="btn btn-danger" (click)="deleteProduct(product.id)">Supprimer</button>
             </div>

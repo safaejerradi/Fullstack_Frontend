@@ -2,8 +2,10 @@ import { Category } from "./category";
 
 export class Product {
     id: number;
-    name : string;
+    nameFR : string;
+    nameENG : string;
     price : number;
-    description : string;
+    descriptionFR : string;
+    descriptionENG : string;
     // categories : Category[];
 }

@@ -3,14 +3,14 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Category id</th>
-            <th>Actions </th>
+            <!-- <th>Category id</th>
+            <th>Actions </th> -->
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let category of categories">
             <td> {{ category.name }} </td>
-            <td> {{ category.product_id }} </td>
+            <!-- <td> {{ category.product_id }} </td>
             <td>
                 <button 
                 (click)="updateCategory(category.id)" 
@@ -21,7 +21,7 @@
                 <button 
                 (click)="deleteCategory(category.id)" 
                 class="btn btn-danger">delete</button>
-            </td>
+            </td> -->
         </tr>
     </tbody>
 </table>

@@ -18,9 +18,6 @@ export class CreateProductComponent  {
     private route: ActivatedRoute) { }
   
 
-  goToProductList() {
-    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
-  }
 
   save() {
     this.productservice.save(this.product, this.route.snapshot.params['id']).subscribe(() => {
@@ -30,6 +27,10 @@ export class CreateProductComponent  {
 
   onSubmit() {
     this.save();
+  }
+
+  goToProductList(){
+    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
   }
 
 }

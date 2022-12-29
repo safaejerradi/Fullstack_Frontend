@@ -1,9 +1,14 @@
 <div class="col-md-6 offset-md-3">
     <h3> Update Product </h3>
     <form (ngSubmit)="onSubmit()">
+        <div class="form-group required">
+            <label for="nameFR">Nom FR</label>
+            <input type="text" class="form-control" id="nameFR" required [(ngModel)]="product.nameFR" name="nameFR" >
+        </div>
+
         <div class="form-group">
-            <label for="price">Nom</label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="product.name" name="name">
+            <label for="nameENG">Nom ENG</label>
+            <input type="text" class="form-control" id="nameENG" [(ngModel)]="product.nameENG" name="nameENG" required>
         </div>
 
         <div class="form-group">
@@ -12,8 +17,13 @@
         </div>
 
         <div class="form-group">
-            <label for="description">Déscription</label>
-            <input type="text" class="form-control" id="description" [(ngModel)]="product.description" name="description">
+            <label for="descriptionFR">Description FR</label>
+            <textarea class="form-control" name="descriptionFR" id="descriptionFR" cols="30" rows="10" [(ngModel)]="product.descriptionFR"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="descriptionENG">Description ENG</label>
+            <textarea class="form-control" name="descriptionENG" id="descriptionENG" cols="30" rows="10" [(ngModel)]="product.descriptionENG"></textarea>
         </div>
 
         <button class="btn btn-info" type="submit">Modifier</button>

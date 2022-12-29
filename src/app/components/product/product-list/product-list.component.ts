@@ -44,13 +44,13 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
   }
 
   deleteProduct(id: number) {
-    this.productservice.delete(id).subscribe(data => {
+    this.productservice.delete(id).subscribe(() => {
       this.getProduct();
     })
   }
 
   addCategoryToProduct(id: number) {
-    this.router.navigate([`${id}/category/create`], { relativeTo: this.route });
+    this.router.navigate([`product/${id}/category/create`]);
   }
 
   addProductToShop(id: number) {
