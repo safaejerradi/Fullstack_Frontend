@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <button class="btn btn-success float-right"  routerLink="/shop/create">Ajouter une boutique</button>
+        <button class="btn btn-success float-right" routerLink="/shop/create">Ajouter une boutique</button>
     </div>
 </div>
 
@@ -18,13 +18,15 @@
     </div>
     <div class="col-md-2">
         <label for="dateFieldAfter">Date de création après</label>
-        <input class="form-control" type="date" [max]="dateFieldBefore.value" #dateFieldAfter (change)="changeFilter(dateFieldAfter.value, 'afterCreationDate')">
+        <input class="form-control" type="date" [max]="dateFieldBefore.value" #dateFieldAfter
+            (change)="changeFilter(dateFieldAfter.value, 'afterCreationDate')">
     </div>
     <div class="col-md-2">
         <label for="dateFieldBefore">Date de création avant</label>
-        <input class="form-control" type="date" [min]="dateFieldAfter.value" #dateFieldBefore (change)="changeFilter(dateFieldBefore.value, 'beforeCreationDate')">
+        <input class="form-control" type="date" [min]="dateFieldAfter.value" #dateFieldBefore
+            (change)="changeFilter(dateFieldBefore.value, 'beforeCreationDate')">
     </div>
-  </div>
+</div>
 
 
 <!-- Table -->
@@ -69,9 +71,9 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td class="" mat-cell *matCellDef="let shop">
             <div class="d-flex justify-content-around">
-            <button mat-button class="btn btn-primary" [routerLink]="['/shop/', shop.id, 'detail']">Détails</button>
+                <button mat-button class="btn btn-primary" [routerLink]="['/shop/', shop.id, 'detail']">Détails</button>
                 <button mat-button class="btn btn-info" (click)="updateShop(shop.id)">Modifier</button>
-            <button mat-button class="btn btn-danger" (click)="deleteShop(shop.id)">Supprimer</button>
+                <button mat-button class="btn btn-danger" (click)="deleteShop(shop.id)">Supprimer</button>
             </div>
         </td>
     </ng-container>
@@ -82,9 +84,5 @@
 </table>
 
 <!-- Pagination -->
-<mat-paginator 
-[pageSizeOptions]="[5, 10, 20]" 
-showFirstLastButtons>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
 </mat-paginator>
-
-

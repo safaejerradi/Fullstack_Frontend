@@ -1,6 +1,70 @@
-<h1> View Product Details</h1>
-<div>
-    <div>
-       <label><b> Product Name: </b></label>{{product.nameFR}}
+<h1>Information sur le produit</h1>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Nom français :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.nameFR}}</p>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Nom anglais :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.nameENG}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Prix :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.price}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Description française :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.descriptionFR}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Description anglaise :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.descriptionENG}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Nombre de catégories distinctes :</p>
+        </div>
+        <div class="col-md-8">
+            <p>{{product.categories === undefined ? 0 : product.categories.length}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p class="font-weight-bold">Catégories :</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <app-category-list [product]="product"></app-category-list>
+        </div>
+    </div>
+
 </div>
