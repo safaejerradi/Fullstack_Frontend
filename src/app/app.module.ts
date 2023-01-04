@@ -24,6 +24,7 @@ import { getFrPaginatorIntl } from './fr-paginator-intl';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { DisplayCategoriesPipe } from './pipes/display-categories-pipe';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { DisplaySchedulePipe } from './pipes/display-schedule.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UpdateCategoryComponent } from './components/category/update-category/u
     ProductDetailsComponent,
     CategoryDetailsComponent,
     FilterByPipe,
-    DisplayCategoriesPipe
+    DisplayCategoriesPipe,
+    DisplaySchedulePipe
   ],
   imports: [
     BrowserModule,

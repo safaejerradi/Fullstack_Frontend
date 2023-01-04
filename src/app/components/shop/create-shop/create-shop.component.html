@@ -1,10 +1,56 @@
 <div class="col-md-6 offset-md-3">
-    <h3> Create Shop </h3>
+    <h3> Créer un magasin </h3>
     <form (ngSubmit)="onSubmit()">
 
         <div class="form-group">
-            <label> Name</label>
+            <label>Nom</label>
             <input type="text" class="form-control" id="name" [(ngModel)]="shop.name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label>Horaire d'ouverture</label>
+        </div>
+
+        <div class="form-group">
+            <label>Lundi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="monday"
+                [(ngModel)]="schedule.monday" name="monday">
+        </div>
+
+        <div class="form-group">
+            <label>Mardi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="tuesday"
+                [(ngModel)]="schedule.tuesday" name="tuesday">
+        </div>
+
+        <div class="form-group">
+            <label>Mercredi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="wednesday"
+                [(ngModel)]="schedule.wednesday" name="wednesday">
+        </div>
+
+        <div class="form-group">
+            <label>Jeudi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="thursday"
+                [(ngModel)]="schedule.thursday" name="thursday">
+        </div>
+
+        <div class="form-group">
+            <label>Vendredi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="friday"
+                [(ngModel)]="schedule.friday" name="friday">
+        </div>
+
+        <div class="form-group">
+            <label>Samedi</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="saturday"
+                [(ngModel)]="schedule.saturday" name="saturday">
+        </div>
+
+        <div class="form-group">
+            <label>Dimanche</label>
+            <input placeholder="(eg. 9-15, 21-00)" type="text" class="form-control" id="sunday"
+                [(ngModel)]="schedule.sunday" name="sunday">
         </div>
 
         <div class="form-group">
@@ -13,20 +59,20 @@
                 <input [(ngModel)]="shop.closed" class="form-check-input" type="radio" name="exampleRadios"
                     id="exampleRadios1" [value]="true">
                 <label class="form-check-label" for="exampleRadios1">
-                    Yes
+                    Oui
                 </label>
             </div>
             <div class="form-check form-check-inline">
                 <input [(ngModel)]="shop.closed" class="form-check-input" type="radio" name="exampleRadios"
                     id="exampleRadios2" [value]="false">
                 <label class="form-check-label" for="exampleRadios2">
-                    No
+                    Non
                 </label>
             </div>
         </div>
 
 
-        <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn btn-success" type="submit">Ajouter</button>
 
     </form>
 </div>

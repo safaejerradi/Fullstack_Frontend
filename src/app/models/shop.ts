@@ -1,3 +1,5 @@
+import { OpeningSchedule } from "./OpeningSchedule";
+
 export class Shop {
 
     id: number;
@@ -6,5 +8,5 @@ export class Shop {
     creationDate: Date;
     productCount: number;
     categoryCount: number;
-    // schedule: { [key: string]: string; }
+    schedule: OpeningSchedule;
 }

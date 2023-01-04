@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ShopService } from '../../../services/shop.service';
 import { Shop } from '../../../models/shop';
 import { Router } from '@angular/router';
+import { OpeningSchedule } from 'src/app/models/OpeningSchedule';
 
 @Component({
   selector: 'app-create-shop',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateShopComponent {
   shop: Shop = new Shop();
+  schedule:OpeningSchedule = new OpeningSchedule();
 
   constructor(private shopService: ShopService,
     private router: Router) { }
@@ -21,8 +23,8 @@ export class CreateShopComponent {
   }
 
   save() {
-    this.shopService.save(this.shop).subscribe(data => {
-      console.log(data);
+    this.shop.schedule = this.schedule;
+    this.shopService.save(this.shop).subscribe(() => {
       this.goToEmployeeList();
     });
   }

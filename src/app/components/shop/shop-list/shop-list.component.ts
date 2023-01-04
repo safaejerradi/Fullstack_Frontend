@@ -37,6 +37,7 @@ export class ShopListComponent implements OnInit, AfterViewInit {
 
   private getShops() {
     this.shopService.findAll().subscribe(data => {
+      console.log(data);
       this.shops.data = data;
     });
   }

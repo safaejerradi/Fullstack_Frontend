@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,  Router } from '@angular/router';
+import { OpeningSchedule } from 'src/app/models/OpeningSchedule';
 import { Shop } from '../../../models/shop';
 import { ShopService } from '../../../services/shop.service';
 
@@ -11,6 +12,7 @@ import { ShopService } from '../../../services/shop.service';
 export class UpdateShopComponent implements OnInit {
   id: number;
   shop: Shop = new Shop();
+  schedule:OpeningSchedule = new OpeningSchedule();
 
   constructor(private shopService: ShopService,
     private route: ActivatedRoute,
@@ -18,15 +20,16 @@ export class UpdateShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.shopService.findById(this.id).subscribe(data => this.shop = data);
+    this.shopService.findById(this.id).subscribe(data => {this.shop = data; this.schedule = data.schedule;});
   }
 
   onSubmit() {
+    this.shop.schedule = this.schedule;
     this.shopService.update(this.id, this.shop).subscribe(() =>
       this.goToEmployeeList());
   }
 
   goToEmployeeList(){
-    this.router.navigate(['shops']);
+    this.router.navigate(['shop']);
   }
 }

@@ -31,10 +31,47 @@
         <div class="col-md-4">
             <p class="font-weight-bold">Horaires d'ouverture :</p>
         </div>
-        <div class="col-md-8">
-            <p></p>
+        <div class="col-md-4">
+            <table class="table table-striped">
+                <thead>
+                    <th>Jour</th>
+                    <th>Heure d'ouverture</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lundi</td>
+                        <td>{{shop.schedule === undefined ? '' : shop.schedule.monday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mardi</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.tuesday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.wednesday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Jeudi</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.thursday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Vendredi</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.thursday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Samedi</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.saturday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Dimanche</td>
+                        <td>{{shop.schedule=== undefined ? '' : shop.schedule.sunday}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <p>{{shop.schedule | displaySchedule}}</p> -->
         </div>
     </div>
+
 
     <div class="row">
         <div class="col-md-4">
