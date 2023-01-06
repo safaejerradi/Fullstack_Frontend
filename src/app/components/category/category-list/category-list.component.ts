@@ -1,7 +1,7 @@
-import { AfterViewInit, Component ,Input,OnChanges,OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import { AfterViewInit, Component ,Input,OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { Route,Router,ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { Route,ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 @Component({
