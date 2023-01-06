@@ -6,6 +6,7 @@ import { Shop } from 'src/app/models/shop';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Category } from 'src/app/models/category';
+import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 @Component({
   selector: 'app-product-list',
@@ -23,7 +24,8 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
   constructor(
     private productservice: ProductService,
     private router: Router,
-     private route: ActivatedRoute) { }
+     private route: ActivatedRoute,
+     private errorHandler: ErrorHandlerService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['shop'] && !changes['shop'].firstChange) this.getProduct();
@@ -32,6 +34,10 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
   private getProduct() {
     this.productservice.findByShopId(this.shop.id).subscribe(data => {
       this.products.data = data;
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
     });
 
   }
@@ -47,6 +53,10 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
   deleteProduct(id: number) {
     this.productservice.delete(id).subscribe(() => {
       this.products.data = this.products.data.filter(p => p.id !== id);
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
     })
   }
 

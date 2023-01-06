@@ -5,6 +5,7 @@ import { ShopService } from '../../../services/shop.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 @Component({
   selector: 'app-shop-list',
@@ -20,7 +21,8 @@ export class ShopListComponent implements OnInit, AfterViewInit {
 
   constructor(private shopService: ShopService,
     private router: Router,
-     private route: ActivatedRoute) { }
+     private route: ActivatedRoute,
+     private errorHandler: ErrorHandlerService ) { }
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator
@@ -38,6 +40,10 @@ export class ShopListComponent implements OnInit, AfterViewInit {
   private getShops() {
     this.shopService.findAll().subscribe(data => {
       this.shops.data = data;
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
     });
   }
 
@@ -51,7 +57,11 @@ export class ShopListComponent implements OnInit, AfterViewInit {
 
   deleteShop(id: number) {
     this.shopService.delete(id).subscribe(() => {
-      this.getShops();
+      this.shops.data = this.shops.data.filter(shop => shop.id !== id);
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
     })
   }
 

@@ -5,6 +5,7 @@ import { Route,Router,ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 @Component({
   selector: 'app-category-list',
@@ -20,7 +21,9 @@ export class CategoryListComponent implements OnChanges, AfterViewInit {
   categories = new MatTableDataSource<Category>();
 
   constructor(private categoryservice: CategoryService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router,
+    private errorHandler: ErrorHandlerService
+    ) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['product'] && !changes['product'].firstChange) this.categories.data = this.product.categories;
@@ -41,6 +44,10 @@ export class CategoryListComponent implements OnChanges, AfterViewInit {
   deleteCategory(id: number){
     this.categoryservice.delete(id).subscribe( () => {
       this.categories.data = this.categories.data.filter( c => c.id !== id);
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
     })
   }
    

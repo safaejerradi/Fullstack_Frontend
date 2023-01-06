@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,  Router } from '@angular/router';
 import { OpeningSchedule } from 'src/app/models/OpeningSchedule';
+import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { Shop } from '../../../models/shop';
 import { ShopService } from '../../../services/shop.service';
 
@@ -16,17 +17,30 @@ export class UpdateShopComponent implements OnInit {
 
   constructor(private shopService: ShopService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private errorHandler: ErrorHandlerService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.shopService.findById(this.id).subscribe(data => {this.shop = data; this.schedule = data.schedule;});
+    this.shopService.findById(this.id).subscribe(data => {
+      this.shop = data; 
+      this.schedule = data.schedule;
+    },
+    (error) => { 
+      this.errorHandler.set(error);
+      this.errorHandler.handleError(); 
+    });
   }
 
   onSubmit() {
     this.shop.schedule = this.schedule;
     this.shopService.update(this.id, this.shop).subscribe(() =>
-      this.goToEmployeeList());
+      this.goToEmployeeList()
+      ,
+      (error) => { 
+        this.errorHandler.set(error);
+        this.errorHandler.handleError(); 
+      });
   }
 
   goToEmployeeList(){
