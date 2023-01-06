@@ -37,7 +37,6 @@ export class ShopListComponent implements OnInit, AfterViewInit {
 
   private getShops() {
     this.shopService.findAll().subscribe(data => {
-      console.log(data);
       this.shops.data = data;
     });
   }
@@ -51,8 +50,7 @@ export class ShopListComponent implements OnInit, AfterViewInit {
   }
 
   deleteShop(id: number) {
-    this.shopService.delete(id).subscribe(data => {
-      console.log(data);
+    this.shopService.delete(id).subscribe(() => {
       this.getShops();
     })
   }

@@ -18,8 +18,6 @@ export class ProductDetailsComponent implements OnInit {
    this.product = new Product();
    this.productservice.findById(this.id).subscribe( data => {
     this.product = data;
-    console.log(this.product);
-    console.log(this.product.categories); 
   });
   }
 

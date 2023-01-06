@@ -67,9 +67,6 @@ export class ProductListComponent implements  AfterViewInit, OnChanges {
     const categoryFilter = categoryString.length > 0 ?
       categoryString.indexOf(filter.toLocaleLowerCase().trim()) !== -1
       : true;
-
-      console.log(filter.toLocaleLowerCase().trim());
-      console.log(categoryString);
     return categoryFilter;
   }
 
