@@ -12,7 +12,7 @@ import { ShopDetailsComponent } from './components/shop/shop-details/shop-detail
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 const routes: Routes = [
   {path: 'shop', component: ShopListComponent, pathMatch: 'full'},
   {path: '', redirectTo: 'shop', pathMatch: 'full'},

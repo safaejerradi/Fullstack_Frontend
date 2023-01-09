@@ -25,7 +25,7 @@ import { CreateProductComponent } from './components/product/create-product/crea
 import { DisplayCategoriesPipe } from './pipes/display-categories-pipe';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { DisplaySchedulePipe } from './pipes/display-schedule.pipe';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 
 @NgModule({
