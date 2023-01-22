@@ -26,7 +26,7 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   goToCategoryList() {
-    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
+    this.router.navigate(['product', this.route.snapshot.params['id'], 'detail']);
   }
 
   save() {

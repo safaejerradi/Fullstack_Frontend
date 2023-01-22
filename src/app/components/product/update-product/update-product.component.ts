@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { Router ,ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 @Component({
@@ -15,8 +16,8 @@ export class UpdateProductComponent implements OnInit {
 
   constructor(private productservice: ProductService,
     private route: ActivatedRoute,
-    private router: Router,
-    private errorHandler: ErrorHandlerService) { }
+    private errorHandler: ErrorHandlerService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -37,7 +38,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   goToProductList(){
-    this.router.navigate(['shop', this.route.snapshot.params['id'], 'detail']);
+    this.location.back();
   }
 
 }
