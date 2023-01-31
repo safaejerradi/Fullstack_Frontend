@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { Router,ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 
@@ -16,9 +17,10 @@ export class CreateCategoryComponent implements OnInit {
 
   constructor(
     private categoryservice: CategoryService,
-    private router: Router,
     private route: ActivatedRoute,
-    private errorHandler: ErrorHandlerService) { }
+    private router: Router,
+    private errorHandler: ErrorHandlerService,
+    private location: Location) { }
 
 
   ngOnInit(): void {
@@ -26,17 +28,17 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   goToCategoryList() {
-    this.router.navigate(['product', this.route.snapshot.params['id'], 'detail']);
+    this.location.back();
   }
 
   save() {
-    this.categoryservice.save(this.category, this.productId).subscribe(() => {
+    this.categoryservice.save(this.category, this.productId).subscribe({next: () => {
       this.goToCategoryList();
     },
-    (error) => { 
+    error: (error) => { 
       this.errorHandler.set(error);
       this.errorHandler.handleError(); 
-    });
+    }});
   }
 
   onSubmit() {
